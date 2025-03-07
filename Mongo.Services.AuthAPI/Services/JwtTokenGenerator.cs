@@ -25,8 +25,8 @@ namespace Mango.Services.AuthAPI.Services
 
 			var claimList = new List<Claim>
 			{
-				new Claim(JwtRegisteredClaimNames.Email,applicationUser.Email),
 				new Claim(JwtRegisteredClaimNames.Sub,applicationUser.Id),
+				new Claim(JwtRegisteredClaimNames.Email,applicationUser.Email),
 				new Claim(JwtRegisteredClaimNames.Name,applicationUser.UserName),
 			};
 
@@ -38,7 +38,8 @@ namespace Mango.Services.AuthAPI.Services
 				Issuer = _jwtOptions.Issuer,
 				Subject = new ClaimsIdentity(claimList),
 				Expires = DateTime.UtcNow.AddDays(7),
-				SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),SecurityAlgorithms.HmacSha256Signature)
+				SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
+				
 
 			};
 

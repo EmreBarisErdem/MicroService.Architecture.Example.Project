@@ -82,14 +82,14 @@ namespace Mango.Web.Service
 
 					default:
 						var apiContent = await apiResponse.Content.ReadAsStringAsync();
-						var apiResponseDto = JsonConvert.DeserializeObject<ResponseDto>(apiContent);
+						ResponseDto? apiResponseDto = JsonConvert.DeserializeObject<ResponseDto>(apiContent);
 						return apiResponseDto;
 
 				}
 			}
 			catch(Exception ex)
 			{
-				var dto = new ResponseDto
+				ResponseDto dto = new ResponseDto
 				{
 					Message = ex.Message.ToString(),
 					IsSuccess = false

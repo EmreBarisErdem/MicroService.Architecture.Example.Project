@@ -23,7 +23,7 @@ namespace Mango.Services.ShoppingCartAPI.Service
 
 			var resp = JsonConvert.DeserializeObject<ResponseDto>(apiContent);
 
-			if (resp.IsSuccess == true)
+			if (resp != null && resp.IsSuccess == true)
 			{
 				return JsonConvert.DeserializeObject<CouponDto>(Convert.ToString(resp.Result));
 			}

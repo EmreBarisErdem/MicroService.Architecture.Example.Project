@@ -29,27 +29,7 @@ namespace Mango.Services.ShoppingCartAPI.Controllers
 			_couponService = couponService;
 		}
 
-		//[HttpPost("RemoveCoupon")]
-		//public async Task<ResponseDto> RemoveCoupon([FromBody] CartDto cartDto)
-		//{
-		//	try
-		//	{
-		//		var cartFromDb = await _db.CartHeaders.FirstAsync(u => u.UserId == cartDto.CartHeader.UserId);
-
-		//		cartFromDb.CouponCode = "";
-
-		//		_db.CartHeaders.Update(cartFromDb);
-		//		await _db.SaveChangesAsync();
-		//		_response.Result = true;
-
-		//	}
-		//	catch (Exception ex)
-		//	{
-		//		_response.Message = ex.Message.ToString();
-		//		_response.IsSuccess = false;
-		//	}
-		//	return _response;
-		//}
+		
 
 		[HttpPost("ApplyCoupon")]
 		public async Task<ResponseDto> ApplyCoupon([FromBody] CartDto cartDto)
@@ -73,7 +53,7 @@ namespace Mango.Services.ShoppingCartAPI.Controllers
 			return _response;
 		}
 
-		[HttpPost("GetCart/{userId}")]
+		[HttpGet("GetCart/{userId}")]
 		public async Task<ResponseDto> GetCart(string userId)
 		{
 			try
@@ -195,7 +175,7 @@ namespace Mango.Services.ShoppingCartAPI.Controllers
 		}
 
 
-		[HttpPost("RemoveCart")]
+		[HttpDelete("RemoveCart")]
 		public async Task<ResponseDto> RemoveCart([FromBody] int cartDetailsId)
 		{
 			try

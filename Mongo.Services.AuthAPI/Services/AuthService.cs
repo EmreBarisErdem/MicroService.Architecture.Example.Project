@@ -32,7 +32,7 @@ namespace Mango.Services.AuthAPI.Services
 			{
 				return new LoginResponseDto() { User = null, Token = "" }; 
 			}
-			//if user is found , Generate JWT Token
+			//if user is found , Generate JWT Token & get his roles
 			var roles = await _userManager.GetRolesAsync(user);
 
 			var token = _jwtTokenGenerator.GenerateToken(user,roles);
